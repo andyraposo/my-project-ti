@@ -1,0 +1,13 @@
+.login {
+    background-color: #e8e8e8;
+    position: fixed;
+    width: 430px;
+    height: 255px; 	
+    top: 30%; 
+	left: 40%;
+    right: 40%;
+    bottom: 30%;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px; 	
+}
