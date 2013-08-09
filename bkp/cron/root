@@ -1,0 +1,10 @@
+#[minutos] [horas] [dias do mês] [mês] [dias da semana] [usuário] [comando]
+#Minutos: informe números de 0 a 59;
+#Horas: informe números de 0 a 23;
+#Dias do mês: informe números de 1 a 31;
+#Mês: informe números de 1 a 12;
+#Dias da semana: informe números de 0 a 7;
+#Usuário: é o usuário que vai executar o comando (não é necessário especificá-lo se o arquivo do próprio usuário for usado);
+#Comando: a tarefa que deve ser executada. 
+
+00 21 * * * /root/./bkp.sh 

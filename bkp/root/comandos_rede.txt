@@ -1,0 +1,106 @@
+ping ? envia mensagens ICMP de echo request/reply. Algumas opções:
+
+-c <n> 	: envia n requests somente
+-b     	: ping ?broadcast?
+-Q 	: define parâmetro QoS
+-r 	: envia diretamente para o host
+-s	: define o tamanho da mensagem ICMP (default é 64 bytes = 56-payload + 8-cabeçalho  bytes)
+-t	: ajusta o TTL do pacote
+
+tcpdump ? visualização de cabeçalhos de pacotes de rede na tela. Pode mandar para um arquivo e ler do mesmo. Algumas opções:
+
+-D	: interfaces vistas pelo tcpdump
+-c	: captura c pacotes
+-e	: informação de camada de enlace
+-A	: imprime os pacotes em ASCII
+-n	: não resolve nomes (mostra endereços como são)
+-v 	: modo verbose (pode-se aumenta-lo com -vv -vvv)
+-x	: mostra o PDU em hexadecimal
+-S	: mostra números de sequência em formato absoluto (por padrão o tcpdump mostra os números relativos aos valores iniciais estabelecidos na conexão)
+-t	: retira a informação de timestamp do início da linha
+-ttt	: mostra a diferença de tempo para uma referência em us (microsegundos)
+expressão ? indica que pacotes devem ser mostrados (dumped) Ex.:
+tcpdump -n icmp
+tcpdump src <origem>
+tcpdump dst <destino>
+tcpdump host <máquina>
+tcpdump 'tcp[13] & 2==2'  -> obtem somente os segmentos com SYN ligado
+
+mais detalhes: "man tcpdump" na linha de comando
+
+traceroute ? encontra a rote que os pacotes seguirão para o destino mencionado. Algumas opções:
+
+-f	: ajusta o TTL do primeiro pacote a ser enviado
+mtr ? ferramenta de diagnóstico de rede. Comandos ping e traceroute combinados com respostas online em tabela, ao estilo do comento top.
+
+ethtool - informações sobre interfaces ethernet
+
+netstat ? fornece várias informações de rede
+
+-r	: mostra tabelas de rotas (mesma saída do comando route sem argumentos)
+-i	: informação das interfaces de rede
+-s	: estatísticas de protocolos usados
+-t	: mostra sockets TCP
+-u	: mostra sockets UDP
+-w	: mostra sockets RAW (não dependem de protocolo de transporte)
+-a	: mostar sockets em todos os estados
+-l	: mostra sockets que estão ?ouvindo? (LISTEN - esperando uma conexão)
+-n	: não resolve nomes (para endereços e portas)
+
+nmap ? faz uma varredura nas portas disponibilizadas no sistema
+
+-v	: verbose mode
+-sT	: tenta conexão TCP completa nas portas. Qualquer usuário pode usar.
+-sU	: tenta varrer portas UDP
+-sS	: envia apenas segmentos SYN. Os receber o SYN/ACK termina a conexão com um RST (somente para usuários privilegiados). Uma das vantagens sé que, em muitos sistemas, isto não é logado por firewalls ou programas equivalentes.
+-sV	: além de descobrir portas disponíveis, tenta ir além descobrindo que serviços e versões estão sendo disponibilizados
+-F	: testa todas as portas no arquivo /etc/services
+-p	: testa TODAS as portas (65.000)
+-f	: força a fragmentação do segmento para dificultar a análise por parte de firewalls e semelhantes.
+
+lsof ? mostra arquivos abertos (lembre-se que sockets são encarados pelo Linux como outro arquivo qualquer) e quem está usando. Algumas opções:
+
+-i	: mostra todos os arquivos relacionados com uma interface de rede
+-U	: mostra apenas arquivos do tipo sockets
+
+fuser ? identifica processos e usuários que estão usando arquivos ou sockets.
+
+Sintaxe: pp/pro ? mostra o processo que está usando o protocolo e porta.
+ Ex.: fuser -v 22/tcp
+
+arp ? verifica e manipula a tabela arp do sistema
+
+-v	: saída detalhada
+-a	: tabelas ARP de todas as interfaces
+
+arping ? envia requests ARP para hosts determinados
+
+tethereal ? analisador de tráfego baseado no Ethereal, que é um analisador de pacotes em modo gráfico. O Tethereal é sua versão em modo texto. Algumas opções:
+
+-V	: mostra todos os detalhes de cada pacote capturado
+-x	: mostra o dump de informação coletada (informação ?bruta?) em formato hexadecimal
+
+Outras ferramentas do pacote Ethereal são:
+capsinfo ? informações de um arquivo de captura
+dftest - ?
+editcap ? converte entre formatos de analisadores
+mergecap ? faz o merge de dois ou mais arquivos de captura
+text2pcap ? converte arquivos de dumps de pacotes num arquivo de captura
+
+nemesis ? geração e envio de pacotes com cabeçalhos definidos
+
+packit ? geração e envio de pacotes com cabeçalhos definidos
+
+
+Outros utilitários de rede ainda não avaliados:
+arpwatch ? registra pares IP/MAC e reposta em caso de mudanças
+arphound (http://www.nottale.net/index.php?project=arphound) - monitoramento de tráfego ARP
+statserial - informações sobre dispositivos seriais
+sendip - monta pacotes específicos (rip, icmp, tcp, udp, ipv4, ipv6,)
+4g8 (http://forgate.sourceforge.net/) e
+vtun (http://vtun.sourceforge.net/) - montagem de túneis através de redes TCP/IP
+packit (http://packit.sourceforge.net/) - manipulador de tráfego de rede
+hunt (http://lin.fsid.cvut.cz/~kra/index.html#HUNT) - TCP hijacking e análise de exploits de segurança no TCP
+ngrep (http://ngrep.sourceforge.net/) - grep realtime de tráfego de rede
+lft  - traça rotas para um destino com mais informações que o traceroute normal
+scapy ? manipulador de pacotes e scanner de rede

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+JAVA_HOME=/usr/java/jre1.7.0_05/
+export JAVA_HOME
+PATH=$PATH:$JAVA_HOME/bin
+export PATH
+CLASSPATH=$JAVA_HOME/lib
+export CLASSPATH
+MANPATH=$MANPATH:$JAVA_HOME/man
+export MANPATH

@@ -1,0 +1,16 @@
+deb http://ftp2.de.debian.org/debian squeeze main non-free
+
+ron@ron:~$ apt-get update
+
+ron@ron:~$ apt-cache search sun-java6
+
+ron@ron:~$ apt-get install sun-java6-bin sun-java6-javadb sun-java6-jdk sun-java6-plugin
+
+Make Sun Java the Java runtime of your choice:
+
+ron@ron:~$ update-java-alternatives -s java-6-sun
+
+Edit file /etc/profile, add:
+
+JAVA_HOME="/usr/lib/jvm/java-6-sun"
+export JAVA_HOME

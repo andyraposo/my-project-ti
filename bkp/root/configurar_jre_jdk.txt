@@ -1,0 +1,8 @@
+apt-get remove --purge openjdk-*
+add-apt-repository ppa:webupd8team/java
+apt-get update
+mkdir -p /usr/lib/mozilla/plugins
+apt-get install oracle-java7-installer
+ou
+apt-get install oracle-java8-installer
+java -version
