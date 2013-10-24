@@ -1,0 +1,6 @@
+c:\pstool\psexec \\192.168.0.252 -u "usuario" cmd
+c:\windows\system32\inetsrv\ 
+appcmd list apppoll
+appcmd start apppool "nome do pool"
+appcmd stop apppool "nome do pool"
+appcmd recycle apppool "nome do pool"
